@@ -1,16 +1,19 @@
 from flask import Flask, url_for, render_template, request, redirect
+import sys
 
 app = Flask(__name__)
 
 current_message = ""
 
 @app.route('/', methods=['GET','POST'])
+# @app.route('/')
 def index():
+    print("loaded", file=sys.stderr)
     global current_message
 
     if request.method == 'POST':
        current_message = request.form.get("chat_text", '') 
-       print(current_message)
+       print(current_message, file=sys.stderr)
 
     return render_template("chatwindow.html")
 

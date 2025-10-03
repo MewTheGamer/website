@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
 
@@ -6,7 +6,21 @@
 
 {% block footer %}
 
-<input class="chatbox" name="chat_text" max="1000" required>
-<input type="submit" hidden>
+<form class="chatbox" method="post" autocomplete="off">
+    <input class="chatbox" id="chatbox" name="chat_text" max="1000" required>
+</form>
 
 {% endblock footer %}
+
+<!-- {% block script %} -->
+<!-- <script> -->
+<!--     chatbox = document.getElementById("chatbox"); -->
+<!--     chatbox.addEventListener("keydown", function submitForm() { -->
+<!--         if (event.key == "Enter") { -->
+<!--             chatbox.submit(); -->
+<!--             console.log("TEST"); -->
+<!--         } -->
+<!--     }); -->
+
+<!-- </script> -->
+<!-- {% endblock script %} -->
