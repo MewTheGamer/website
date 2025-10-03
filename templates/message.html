@@ -1,4 +1,7 @@
+{% for message in message_list %}
+
 <div>
-    <p>{{ name if name else "Anonymous" }}</p>
-    <p>{{ message_text if message_text else "HI" }}</p>
+    <p>{{ message }}</p>
 </div>
+
+{% endfor %}

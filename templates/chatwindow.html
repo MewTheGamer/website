@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% for message in message_list %}
+
+<p>{{ message }}</p>
+
+{% endfor %}
 
 {% endblock content %}
 
@@ -12,15 +17,3 @@
 
 {% endblock footer %}
 
-<!-- {% block script %} -->
-<!-- <script> -->
-<!--     chatbox = document.getElementById("chatbox"); -->
-<!--     chatbox.addEventListener("keydown", function submitForm() { -->
-<!--         if (event.key == "Enter") { -->
-<!--             chatbox.submit(); -->
-<!--             console.log("TEST"); -->
-<!--         } -->
-<!--     }); -->
-
-<!-- </script> -->
-<!-- {% endblock script %} -->

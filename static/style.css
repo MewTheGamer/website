@@ -10,6 +10,7 @@ body {
 
 .chatwindow {
     background-color: red;
+    top:0px;
     width:100vw;
     height:90vh;
 }
@@ -26,4 +27,8 @@ body {
 .chatbox {
     width:90vw;
     height: 50%;
+}
+
+p {
+    margin-top:0px;
 }
