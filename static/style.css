@@ -24,9 +24,16 @@ body {
     flex-direction: column;
 }
 
-.chatbox {
+#chatbox {
     width:90vw;
-    height: 50%;
+    height: 4vh;
+}
+
+input {
+    border-radius: 20px;
+    width:90%;
+    height:50%;
+    padding-left: 10px;
 }
 
 p {
