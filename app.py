@@ -1,3 +1,4 @@
+from typing import Optional
 from flask import Flask, url_for, render_template, request, redirect
 import sys
 
@@ -5,6 +6,14 @@ app = Flask(__name__)
 
 userInput = ""
 user = 0
+
+class Message():
+    sent = 0
+    name = ""
+    template = render_template("message.html")
+    message_text = ""
+
+message_list: list[Optional['Message']] = [Message()]*1000
 
 # current_message = ""
 
@@ -17,6 +26,7 @@ def index():
     if request.method == 'POST':
        current_message = request.form.get("chat_text", '') 
        print(current_message, file=sys.stderr)
+       message_list.append(new Message())
 
     return render_template("chatwindow.html")
 
