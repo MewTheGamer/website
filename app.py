@@ -1,8 +1,13 @@
 from flask import Flask
 app = Flask(__name__)
+
+
+#this only works in the terminal
+
 userInput = ""
 displayText = ""
-user = 0
+user = True
+
 while True:
     print("enter a text to print")
     print("enter '<<' to end")
@@ -11,6 +16,11 @@ while True:
         case "<<":
             break
         case _:
-            
-            displayText = displayText + "\n" + userInput
-            print(displayText)
+            if user:
+                displayText = displayText + "\n" + userInput
+                print(displayText)
+                user = False
+            else:
+                displayText = displayText + "\n" + "    " + userInput
+                print(displayText)
+                user = True
