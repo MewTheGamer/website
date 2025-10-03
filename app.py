@@ -24,17 +24,28 @@ def index():
 if __name__ == '__main__':
     app.run()
 
-# def post():
-#     userInput = input(">")
-#     if user == 0:
-#         print("\n" + userInput)
-#         user = 1
-#     else: 
-#         print("\n" + "    " + userInput)
-#         user = 0
 
-# while True:
-#     post()
+
+html_template = """
+<!DOCTYPE html!>
+<html>
+    
+    <p> text <p>
+</html>
+
+
+"""
+def post():
+    userInput = input(">")
+    if user == 0:
+        print("\n" + userInput)
+        user = 1
+    else: 
+        print("\n" + "    " + userInput)
+        user = 0
+
+while True:
+    post()
 
 
 #   |   this only works in the terminal
