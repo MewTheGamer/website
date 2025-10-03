@@ -2,8 +2,8 @@
 
 <head>
     <title>Chat</title>
-    <link rel="stylesheet" type="text/css" href="../static/style.css">
-    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
@@ -12,9 +12,6 @@
         {% block content %}{% endblock content %}
     </div>
     <div class="footer">
-        <!-- {% block footer %}{% endblock footer %} -->
-        <!-- <input class="chatbox" name="chat_text" max="1000" required> -->
-        <input class="chatbox" name="chat_text" max="1000" required>
-        <input type="submit" hidden>
+        {% block footer %}{% endblock footer %}
     </div>
 </body>
