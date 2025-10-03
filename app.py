@@ -2,8 +2,16 @@ from flask import Flask, url_for, render_template, request, redirect
 
 app = Flask(__name__)
 
-@app.route('/')
+current_message = ""
+
+@app.route('/', methods=['GET','POST'])
 def index():
+    global current_message
+
+    if request.method == 'POST':
+       current_message = request.form.get("chat_text", '') 
+       print(current_message)
+
     return render_template("chatwindow.html")
 
 
