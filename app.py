@@ -10,6 +10,10 @@ def index():
 if __name__ == '__main__':
     app.run()
 
+
+def post():
+    
+
 #this only works in the terminal
 
 # userInput = ""
