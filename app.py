@@ -2,7 +2,10 @@ from flask import Flask, url_for, render_template, request, redirect
 
 app = Flask(__name__)
 
-current_message = ""
+userInput = ""
+user = 0
+
+# current_message = ""
 
 @app.route('/', methods=['GET','POST'])
 def index():
@@ -18,11 +21,21 @@ def index():
 if __name__ == '__main__':
     app.run()
 
+# def post():
+#     userInput = input(">")
+#     if user == 0:
+#         print("\n" + userInput)
+#         user = 1
+#     else: 
+#         print("\n" + "    " + userInput)
+#         user = 0
 
-def post():
-    
+# while True:
+#     post()
 
-#this only works in the terminal
+
+#   |   this only works in the terminal
+#   v
 
 # userInput = ""
 # displayText = ""
