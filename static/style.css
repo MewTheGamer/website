@@ -9,15 +9,29 @@ body {
 }
 
 .chatwindow {
-    background-color: red;
+    background-color: rgb(113, 185, 199);
+    /* padding:100px; */
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 100px;
+    padding-bottom: 1px;
+    left:0px;
     top:0px;
-    width:100vw;
-    height:90vh;
+    position: relative;
+    width:81vw;
+    height:50vh;
+    border-bottom: 1cm;
+    border-right: 1cm;
+    border-top: 1cm;
+    border-left: 1cm;
+    border-radius: 1%;
+    border-style:ridge;
+    border-color: rgba(0, 0, 0, 0.334);
 }
 
 .footer {
     width:100vw;
-    height:10vh;
+    height:30vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,6 +48,7 @@ input {
     width:90%;
     height:50%;
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 p {
