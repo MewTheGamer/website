@@ -1,7 +1,9 @@
 from typing import Optional
 from flask import Flask, url_for, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
 from jinja2 import Template
 import sys
+from datetime import datetime, timezone
 
 app = Flask(__name__)
 
@@ -22,6 +24,10 @@ messages = ["Welcome"]
 message_template = Template("""
                             <p>{{ message }}</p>g`
                             """)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 @app.route('/', methods=['GET','POST'])
 # @app.route('/')
