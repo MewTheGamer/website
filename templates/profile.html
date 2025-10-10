@@ -3,18 +3,18 @@
 <head>
     <title>Register</title>
     <!-- <link rel="stylesheet" type="text/css" href="../static/style.css"> -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profileStyle.css') }}">
 
 </head>
 
 <body>
     <div class="account-page">
-        <h3>Insert your sensitive information</h3>
+        <h3>Please enter a name, email, and password for an account</h3>
         <form method="post" class="pos">
-            <input type="text" id="name" name="name" required>
-            <input type="text" id="email" name="email" required>
-            <input type="text" id="password" name="password" required>
-            <button type="submit">Submit</button>
+            <p>------Name:<input type="text" id="name" name="name" required></p>
+            <p>------Email:<input type="text" id="email" name="email" required></p>
+            <p>--Password:<input type="text" id="password" name="password" required></p>
+            <p><button type="submit">Submit</button></p>
         </form>
     </div>
 </body>

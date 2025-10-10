@@ -1,0 +1,14 @@
+body {
+top:0px;
+    left:420px;
+    top: 50px;
+    padding:100px;
+    margin:0px;
+    position:absolute;
+    background-color: rgb(116, 143, 232);
+    overflow: scroll;
+    border-style:double;
+    border-width: .2cm;
+    border-color: black;
+    border-radius: 5%;
+}
