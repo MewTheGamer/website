@@ -56,6 +56,7 @@ def profile():
                     )
         except Exception as e:
             print(e, file=sys.stderr)
+        return render_template("chatwindow.html")
 
     else:
         return render_template("profile.html")
