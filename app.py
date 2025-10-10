@@ -51,22 +51,26 @@ def profile():
     print("loaded", file=sys.stderr)
     
     if request.method == 'POST':
-        print(request.form.get("name"), file=sys.stderr)
-        print(request.form.get("email"), file=sys.stderr)
-        print(request.form.get("password"), file=sys.stderr)
         try:
             new_profile = Profile(
                     name=request.form.get("name"),
                     email=request.form.get("email"),
                     password=request.form.get("password")
                     )
-            db.session.add(new_profile)
-            db.session.commit()
+            result = Profile.query.all()
+            for profile in result:
+                if profile.name == new_profile.name:
+                    print("Duplicate name", file=sys.stderr)
+                    return render_template("profile.html")
+                else:
+                    print(result, file=sys.stderr)
+                    db.session.add(new_profile)
+                    db.session.commit()
+                    return redirect(url_for("chat"), )
         except Exception as e:
             db.session.rollback()
             db.session.commit()
             print(f"ERROR{e}", file=sys.stderr)
-        return redirect(url_for("chat"), )
 
     else:
         return render_template("profile.html")
