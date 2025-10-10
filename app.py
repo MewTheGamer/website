@@ -1,6 +1,7 @@
 from typing import Optional
 from flask import Flask, url_for, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import typing
 from jinja2 import Template
 import sys
 from datetime import datetime, timezone
@@ -29,6 +30,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+class Profile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=True, default="Anonymous") 
+    email = db.Column(db.String(100), nullable=False) 
+    password = db.Column(db.String(100), nullable=False) 
+
+
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/', methods=['GET','POST'])
