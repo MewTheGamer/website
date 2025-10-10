@@ -43,6 +43,10 @@ with app.app_context():
 def index():
     return redirect(url_for("profile"))
 
+name = ""
+email = ""
+password = ""
+
 @app.route('/profile', methods=['GET','POST'])
 def profile():
     print("loaded", file=sys.stderr)
