@@ -29,6 +29,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
+
 @app.route('/', methods=['GET','POST'])
 # @app.route('/')
 def index():
@@ -49,40 +51,3 @@ def index():
 if __name__ == '__main__':
     app.app_context()
     app.run()
-
-# def post():
-#     userInput = input(">")
-#     if user == 0:
-#         print("\n" + userInput)
-#         user = 1
-#     else: 
-#         print("\n" + "    " + userInput)
-#         user = 0
-
-# while True:
-#     post()
-
-
-#   |   this only works in the terminal
-#   v
-
-# userInput = ""
-# displayText = ""
-# user = True
-
-# while True:
-#     print("enter a text to print")
-#     print("enter '<<' to end")
-#     userInput = input(">")
-#     match userInput:
-#         case "<<":
-#             break
-#         case _:
-#             if user:
-#                 displayText = displayText + "\n" + userInput
-#                 print(displayText)
-#                 user = False
-#             else:
-#                 displayText = displayText + "\n" + "    " + userInput
-#                 print(displayText)
-#                 user = True
