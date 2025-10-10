@@ -55,8 +55,8 @@ def profile():
                     password=password
                     )
         except Exception as e:
-            print(e, file=sys.stderr)
-        return render_template("chatwindow.html")
+            print(f"ERROR{e}", file=sys.stderr)
+        return redirect(url_for("chat"))
 
     else:
         return render_template("profile.html")
