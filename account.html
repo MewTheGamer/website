@@ -1,3 +1,6 @@
+{% extends "profile.html" %}
+
+{% block form %}
 <div class="account-page">
     <h3>Insert your sensitive information</h3>
     <form method="post" class="pos">
@@ -6,3 +9,5 @@
         <input type="text" id="password" name="password" required>
     </form>
 </div>
+
+{%endblock form %}

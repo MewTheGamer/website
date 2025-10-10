@@ -1,7 +1,6 @@
 from typing import Optional
 from flask import Flask, url_for, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_sqlalchemy import typing
 from jinja2 import Template
 import sys
 from datetime import datetime, timezone
@@ -39,8 +38,9 @@ class Profile(db.Model):
 with app.app_context():
     db.create_all()
 
+
 @app.route('/')
-def MyMessage():
+def index():
     return redirect(url_for("profile"))
 
 @app.route('/chat', methods=['GET','POST'])
@@ -76,5 +76,6 @@ def profile():
                     password=password
                     )
         except Exception as e:
-            print(e, file=std=sys.stderr)
+            print(e, file=sys.stderr)
 
+    return render_template("profile.html")
