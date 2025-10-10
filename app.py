@@ -34,10 +34,9 @@ class Profile(db.Model):
     name = db.Column(db.String(100), nullable=True, default="Anonymous") 
     email = db.Column(db.String(100), nullable=False) 
     password = db.Column(db.String(100), nullable=False) 
-
+    
 with app.app_context():
     db.create_all()
-
 
 @app.route('/')
 def index():
@@ -54,13 +53,24 @@ def profile():
     if request.method == 'POST':
         try:
             new_profile = Profile(
-                    name=name,
-                    email=email,
-                    password=password
+                    name=request.form.get("name"),
+                    email=request.form.get("email"),
+                    password=request.form.get("password")
                     )
+            result = Profile.query.all()
+            for profile in result:
+                if profile.name == new_profile.name:
+                    print("Duplicate name", file=sys.stderr)
+                    return render_template("profile.html")
+                else:
+                    print(result, file=sys.stderr)
+                    db.session.add(new_profile)
+                    db.session.commit()
+                    return redirect(url_for("chat"), )
         except Exception as e:
+            db.session.rollback()
+            db.session.commit()
             print(f"ERROR{e}", file=sys.stderr)
-        return redirect(url_for("chat"))
 
     else:
         return render_template("profile.html")
@@ -82,6 +92,5 @@ def chat():
 
 
 if __name__ == '__main__':
-    app.app_context()
     app.run()
 
