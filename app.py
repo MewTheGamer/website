@@ -41,10 +41,9 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    return redirect(url_for("profile"))
+    return redirect("/profile")
 
 @app.route('/chat', methods=['GET','POST'])
-# @app.route('/')
 def chat():
     print("loaded", file=sys.stderr)
     global current_message
@@ -78,4 +77,5 @@ def profile():
         except Exception as e:
             print(e, file=sys.stderr)
 
-    return render_template("profile.html")
+    else:
+        return render_template("profile.html")
