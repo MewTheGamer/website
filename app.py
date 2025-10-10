@@ -39,10 +39,13 @@ class Profile(db.Model):
 with app.app_context():
     db.create_all()
 
+@app.route('/')
+def MyMessage():
+    return redirect(url_for("profile"))
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/chat', methods=['GET','POST'])
 # @app.route('/')
-def index():
+def chat():
     print("loaded", file=sys.stderr)
     global current_message
 
