@@ -34,10 +34,9 @@ class Profile(db.Model):
     name = db.Column(db.String(100), nullable=True, default="Anonymous") 
     email = db.Column(db.String(100), nullable=False) 
     password = db.Column(db.String(100), nullable=False) 
-
+    
 with app.app_context():
     db.create_all()
-
 
 @app.route('/')
 def index():
@@ -52,15 +51,22 @@ def profile():
     print("loaded", file=sys.stderr)
     
     if request.method == 'POST':
+        print(request.form.get("name"), file=sys.stderr)
+        print(request.form.get("email"), file=sys.stderr)
+        print(request.form.get("password"), file=sys.stderr)
         try:
             new_profile = Profile(
-                    name=name,
-                    email=email,
-                    password=password
+                    name=request.form.get("name"),
+                    email=request.form.get("email"),
+                    password=request.form.get("password")
                     )
+            db.session.add(new_profile)
+            db.session.commit()
         except Exception as e:
+            db.session.rollback()
+            db.session.commit()
             print(f"ERROR{e}", file=sys.stderr)
-        return redirect(url_for("chat"))
+        return redirect(url_for("chat"), )
 
     else:
         return render_template("profile.html")
@@ -82,6 +88,5 @@ def chat():
 
 
 if __name__ == '__main__':
-    app.app_context()
     app.run()
 
