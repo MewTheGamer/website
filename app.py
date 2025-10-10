@@ -41,7 +41,24 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    return redirect("/profile")
+    return redirect(url_for("profile"))
+
+@app.route('/profile', methods=['GET','POST'])
+def profile():
+    print("loaded", file=sys.stderr)
+    
+    if request.method == 'POST':
+        try:
+            new_profile = Profile(
+                    name=name,
+                    email=email,
+                    password=password
+                    )
+        except Exception as e:
+            print(e, file=sys.stderr)
+
+    else:
+        return render_template("profile.html")
 
 @app.route('/chat', methods=['GET','POST'])
 def chat():
@@ -63,19 +80,3 @@ if __name__ == '__main__':
     app.app_context()
     app.run()
 
-@app.route('/profile', methods=['GET','POST'])
-def profile():
-    print("loaded", file=sys.stderr)
-    
-    if request.method == 'POST':
-        try:
-            new_profile = Profile(
-                    name=name,
-                    email=email,
-                    password=password
-                    )
-        except Exception as e:
-            print(e, file=sys.stderr)
-
-    else:
-        return render_template("profile.html")
