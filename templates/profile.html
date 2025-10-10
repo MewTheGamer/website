@@ -8,8 +8,13 @@
 </head>
 
 <body>
-    <div class="accountwindow">
-        {% block form %}{% endblock form %}
+    <div class="account-page">
+        <h3>Insert your sensitive information</h3>
+        <form method="post" class="pos">
+            <input type="text" id="name" name="name" required>
+            <input type="text" id="email" name="email" required>
+            <input type="text" id="password" name="password" required>
+        </form>
     </div>
 </body>
 
