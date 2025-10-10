@@ -36,7 +36,6 @@ class Profile(db.Model):
     email = db.Column(db.String(100), nullable=False) 
     password = db.Column(db.String(100), nullable=False) 
 
-
 with app.app_context():
     db.create_all()
 
@@ -61,3 +60,18 @@ def index():
 if __name__ == '__main__':
     app.app_context()
     app.run()
+
+@app.route('/profile', methods=['GET','POST'])
+def profile():
+    print("loaded", file=sys.stderr)
+    
+    if request.method == 'POST':
+        try:
+            new_profile = Profile(
+                    name=name,
+                    email=email,
+                    password=password
+                    )
+        except Exception as e:
+            print(e, file=std=sys.stderr)
+
