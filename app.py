@@ -48,36 +48,48 @@ password = ""
 
 @app.route('/profile', methods=['GET','POST'])
 def profile():
-    print("loaded", file=sys.stderr)
+    print("loaded profile", file=sys.stderr)
     
     if request.method == 'POST':
         try:
+            print("trying profile", file=sys.stderr)
             new_profile = Profile(
                     name=request.form.get("name"),
                     email=request.form.get("email"),
                     password=request.form.get("password")
                     )
             result = Profile.query.all()
-            for profile in result:
-                if profile.name == new_profile.name:
-                    print("Duplicate name", file=sys.stderr)
-                    return render_template("profile.html")
-                else:
-                    print(result, file=sys.stderr)
-                    db.session.add(new_profile)
-                    db.session.commit()
-                    return redirect(url_for("chat"), )
+            print(result, file=sys.stderr)
+            if result == []:
+                db.session.add(new_profile)
+                db.session.commit()
+                return redirect(url_for("chat"), )
+            else:
+                for profile in result:
+                    print("trying profile", file=sys.stderr)
+                    print(f"trying profile in for loop", file=sys.stderr)
+                    if profile.name == new_profile.name:
+                        print("Duplicate name", file=sys.stderr)
+                        return redirect(url_for("profile"))
+                    else:
+                        print("created profile", file=sys.stderr)
+                        print(result, file=sys.stderr)
+                        db.session.add(new_profile)
+                        db.session.commit()
+                        return redirect(url_for("chat"), )
         except Exception as e:
+            print(f"ERROR", file=sys.stderr)
             db.session.rollback()
             db.session.commit()
             print(f"ERROR{e}", file=sys.stderr)
+            return render_template("profile.html")
 
     else:
         return render_template("profile.html")
 
 @app.route('/chat', methods=['GET','POST'])
 def chat():
-    print("loaded", file=sys.stderr)
+    print("loaded chat", file=sys.stderr)
     global current_message
 
     if request.method == 'POST':
